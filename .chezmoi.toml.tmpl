@@ -1,0 +1,19 @@
+# {{ (onepasswordDetailsFields "cn4b7yasjupxqv6c4chgoo6uzy").notesPlain.value }}
+[onepassword]
+    mode = "account"
+
+[diff]
+    command = "difft"
+
+[merge]
+    command = "nvim"
+    args = "-d"
+
+[data]
+    {{- if eq .chezmoi.hostname "Mephala" }} 
+    email = {{ (onepasswordItemFields "drfo2oaavoinkrdyzzrkynm5k4").comment.value | quote }}
+    op_ssh_uuid = "drfo2oaavoinkrdyzzrkynm5k4"
+    {{- else if eq .chezmoi.hostname "NVT-MB-DO" }}
+    email = {{ (onepasswordItemFields "fiksoemdu7rsmxjy7csetqylca").comment.value | quote }}
+    op_ssh_uuid = "fiksoemdu7rsmxjy7csetqylca"
+    {{- end }}

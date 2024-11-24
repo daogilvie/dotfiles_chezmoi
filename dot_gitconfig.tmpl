@@ -1,0 +1,33 @@
+[core]
+	excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
+[user]
+    name = Drum Ogilvie
+    useConfigOnly = true
+	email = {{ .email }}
+    signingkey = {{ .chezmoi.homeDir }}/{{ (onepasswordItemFields .op_ssh_uuid).pubfile.value }}
+
+[push]
+	default = simple
+	autoSetupRemote = true
+[merge]
+	conflictStyle = diff3
+[alias]
+	publish = push -u origin HEAD
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = {{ .chezmoi.homeDir }}/.config/git/allowed_signers
+[help]
+	autocorrect = prompt
+[rebase]
+	autosquash = true
+[advice]
+	macheteEditorSelection = false
