@@ -1,0 +1,29 @@
+# Starship config! 
+
+# I've decided that I don't like the blank lines
+add_newline = false
+
+# Wait a little longer for things (lots of cold starts)
+command_timeout = 700
+
+[aws]
+disabled = true
+
+{{- if eq .chezmoi.hostname "NVT-MB-DO"}}
+[kubernetes]
+disabled = false
+
+[[kubernetes.contexts]]
+context_pattern = "rancher-desktop"
+style = "blue"
+context_alias = "rd"
+
+[[kubernetes.contexts]]
+# call out when the context pattern is teleport
+context_pattern = "teleport.*"
+style = "bold red"
+context_alias = "teleport"
+{{- end }}
+
+[package]
+disabled = true
