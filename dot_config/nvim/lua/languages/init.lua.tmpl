@@ -1,7 +1,9 @@
 local path = ... .. '.'
 return {
   require(path .. 'go'),
+  {{- if eq .chezmoi.hostname "NVT-MB-DO"}}
   require(path .. 'helmcharts'),
+  {{- end }}
   require(path .. 'javascript'),
   require(path .. 'julia'),
   require(path .. 'lua'),
