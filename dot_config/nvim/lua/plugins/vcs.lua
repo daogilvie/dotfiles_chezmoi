@@ -160,14 +160,4 @@ return {
             end,
         },
     },
-    {
-        'LhKipp/nvim-git-fixer',
-        dependencies = {
-            "tpope/vim-fugitive",
-            "nvim-lua/plenary.nvim"
-        },
-        keys = {
-            { "<leader>gf", function() require('fixer/picker/telescope').commit { type = "fixup" } end, desc = "Create fixup commit" },
-        },
-    }
 }
