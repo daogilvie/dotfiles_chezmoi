@@ -20,8 +20,5 @@ fish_add_path /usr/local/opt/icu4c/sbin
 # Add sbin
 fish_add_path /usr/local/sbin
 
-# Gcloud sdk
-fish_add_path ~/.google-cloud-sdk/bin
-
 # Rancher Desktop
 fish_add_path ~/.rd/bin
