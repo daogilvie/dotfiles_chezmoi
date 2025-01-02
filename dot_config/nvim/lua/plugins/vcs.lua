@@ -154,6 +154,7 @@ return {
                     gs.diffthis "~"
                 end, { desc = "Diff This ~" })
                 map("n", "<leader>gtd", gs.toggle_deleted, { desc = "Toggle Delete" })
+                map("n", "<leader>gb", gs.blame, { desc = "Blame buffer" })
 
                 -- Text object
                 map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select Hunk" })
