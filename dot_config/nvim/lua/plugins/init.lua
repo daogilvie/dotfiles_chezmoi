@@ -10,11 +10,28 @@ return {
         config = function()
             require('catppuccin').setup({
                 integrations = {
+                    alpha = true,
+                    cmp = true,
+                    dap = true,
+                    dap_ui = true,
+                    diffview = true,
+                    gitsigns = true,
+                    lsp_trouble = true,
+                    mason = true,
+                    navic = {
+                        enabled = false,
+                        custom_bg = "NONE", -- "lualine" will set background to mantle
+                    },
+                    neogit = true,
+                    neotest = true,
+                    notify = true,
+                    nvim_surround = true,
+                    overseer = true,
                     telescope = {
                         enabled = true
                     },
                     treesitter = true,
-                    which_key = true
+                    which_key = true,
                 }
             })
             vim.cmd([[colorscheme catppuccin-mocha]])
