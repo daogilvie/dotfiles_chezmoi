@@ -192,13 +192,13 @@ return {
     event = "VeryLazy"
   },
   {
-    'nvim-pack/nvim-spectre',
-    dependencies = { ' nvim-lua/plenary.nvim' },
+    'MagicDuck/grug-far.nvim',
+    config = function()
+      require('grug-far').setup({
+      });
+    end,
     keys = {
-      { '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', desc = "Toggle Spectre" }
+      { '<leader>S', '<cmd>lua require("grug-far").open()<CR>', desc = "Open grug-far" }
     },
-    config = function(_, opts)
-      require('spectre').setup(opts)
-    end
   }
 }
