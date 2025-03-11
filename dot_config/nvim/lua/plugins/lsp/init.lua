@@ -83,6 +83,9 @@ return {
             -- Not sure the nicest way to do this, but for the moment I'm going to
             -- just bosh it in here.
             local lint = require("lint")
+            local actionlint = require('lint').linters.actionlint
+            actionlint.stdin = false
+            actionlint.args = { '-format', '{{json .}}' }
             -- Specify actionlint on gha workflows
             vim.api.nvim_create_autocmd('BufWritePost', {
                 group = vim.api.nvim_create_augroup('lint_gha', { clear = true }),
