@@ -9,12 +9,12 @@ email = {{ .email | quote }}
 "format_short_id(id)" = "id.shortest(8)"
 
 [signing]
-sign-all = true
+behaviour = "own"
 backend = "ssh"
 key = "{{ (onepasswordDetailsFields .op_ssh_uuid).public_key.value }} {{ .email }}"
 
 [git]
-auto-local-branch = true
+auto-local-bookmark = true
 
 [core]
 fsmonitor = "watchman"
