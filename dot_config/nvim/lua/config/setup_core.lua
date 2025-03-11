@@ -72,9 +72,9 @@ opt.number = true
 opt.relativenumber = true
 local numbertoggle_ag = vim.api.nvim_create_augroup('RelAbsLineToggle', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' },
-  { group = numbertoggle_ag, command = 'set relativenumber' })
+    { group = numbertoggle_ag, command = 'set relativenumber' })
 vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' },
-  { group = numbertoggle_ag, command = 'set norelativenumber' })
+    { group = numbertoggle_ag, command = 'set norelativenumber' })
 
 -- Place a ruler at column 80
 opt.colorcolumn = '80'
