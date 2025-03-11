@@ -161,4 +161,20 @@ return {
             end,
         },
     },
+    {
+        "almo7aya/openingh.nvim",
+        keys = {
+            {
+                "<leader>go",
+                ":OpenInGHFile <CR>",
+                desc = "Open File in GH"
+            },
+            {
+                "<leader>go",
+                ":OpenInGHFileLines <CR>",
+                mode = "v",
+                desc = "Open lines in GH"
+            }
+        },
+    }
 }
