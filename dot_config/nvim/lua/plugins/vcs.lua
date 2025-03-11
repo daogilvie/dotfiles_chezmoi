@@ -81,7 +81,7 @@ return {
                 untracked    = { text = '┆' },
             },
             signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
-            numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
+            numhl                        = true,  -- Toggle with `:Gitsigns toggle_numhl`
             linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
             word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
             watch_gitdir                 = {
@@ -150,7 +150,7 @@ return {
                 end, { desc = "Blame Line" })
                 map("n", "<leader>gtb", gs.toggle_current_line_blame, { desc = "Toggle Line Blame" })
                 map("n", "<leader>ghd", gs.diffthis, { desc = "Diff This" })
-                map("n", "<leader>ghD", function()
+                map("n", "<leader>ghd", function()
                     gs.diffthis "~"
                 end, { desc = "Diff This ~" })
                 map("n", "<leader>gtd", gs.toggle_deleted, { desc = "Toggle Delete" })
