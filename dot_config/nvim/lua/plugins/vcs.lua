@@ -7,6 +7,7 @@ return {
             require("diffview").setup({
                 keymaps = {
                     file_panel = {
+                        { "n", "<leader>cq", "<CMD>DiffviewClose<CR>", { desc = "Close Diffview" } },
                         {
                             "n",
                             "<leader>cF",
