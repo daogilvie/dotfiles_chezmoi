@@ -170,12 +170,11 @@ local modules = {
     {
         "nvim-neotest/neotest",
         keys = {
-            -- This freezes so I'm turning it off until I know why
-            -- {
-            --     '<leader>ts',
-            --     function() require('neotest').summary.toggle() end,
-            --     desc = "Toggle Neotest Summary"
-            -- },
+            {
+                '<leader>ts',
+                function() require('neotest').summary.toggle() end,
+                desc = "Toggle Neotest Summary"
+            },
             { '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end, desc = "Test current file" },
             { '<leader>tr', function() require('neotest').run.run() end,                   desc = "Run test" },
             { '<leader>to', function() require('neotest').output.open() end,               desc = "Open Test Output" },
