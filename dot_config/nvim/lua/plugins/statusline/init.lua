@@ -25,7 +25,7 @@ return {
             return {
                 options = {
                     icons_enabled = true,
-                    theme = "catppuccin-mocha",
+                    theme = "monokai-pro",
                     component_separators = {},
                     section_separators = {},
                     disabled_filetypes = {

@@ -1,41 +1,14 @@
 -- Contains any modules that are universally applicable, or have hardly any config
 return {
     { "nvim-lua/plenary.nvim" }, -- This provides utility functions for other plugins
-    -- Catppucin seems nice
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "loctvl842/monokai-pro.nvim",
+        config = function()
+            require("monokai-pro").setup({ filter = "spectrum" })
+            vim.cmd([[colorscheme monokai-pro]])
+        end,
         lazy = false,
         priority = 1000,
-        config = function()
-            require('catppuccin').setup({
-                integrations = {
-                    alpha = true,
-                    cmp = true,
-                    dap = true,
-                    dap_ui = true,
-                    diffview = true,
-                    gitsigns = true,
-                    lsp_trouble = true,
-                    mason = true,
-                    navic = {
-                        enabled = false,
-                        custom_bg = "NONE", -- "lualine" will set background to mantle
-                    },
-                    neogit = true,
-                    neotest = true,
-                    notify = true,
-                    nvim_surround = true,
-                    overseer = true,
-                    telescope = {
-                        enabled = true
-                    },
-                    treesitter = true,
-                    which_key = true,
-                }
-            })
-            vim.cmd([[colorscheme catppuccin-mocha]])
-        end
     },
     "MunifTanjim/nui.nvim",       -- This provides UI elements for other plugins
     {
@@ -92,6 +65,12 @@ return {
                 "<cmd>Trouble telescope toggle<cr>",
                 desc =
                 "Toggle Trouble"
+            },
+            {
+                "<leader>xs",
+                "<cmd>Trouble symbols toggle pinned=true win.relative=win win.position=right<cr>",
+                desc =
+                "Trouble document symbols"
             },
             {
                 "<leader>xf",
@@ -208,6 +187,17 @@ return {
         opts = {
             search = {
                 mode = "fuzzy",
+                exclude = {
+                    "notify",
+                    "cmp_menu",
+                    "noice",
+                    "flash_prompt",
+                    "NeogitStatus",
+                    function(win)
+                        -- exclude non-focusable windows
+                        return not vim.api.nvim_win_get_config(win).focusable
+                    end,
+                },
             },
             label = {
                 rainbow = {
