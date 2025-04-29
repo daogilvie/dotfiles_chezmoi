@@ -4,13 +4,23 @@ return {
     {
         "loctvl842/monokai-pro.nvim",
         config = function()
-            require("monokai-pro").setup({ filter = "spectrum" })
+            require("monokai-pro").setup({
+                filter = "spectrum",
+                background_clear = {
+                    "notify",
+                    "telescope",
+                    "which-key",
+                },
+                plugins = {
+                    notify = {}
+                }
+            })
             vim.cmd([[colorscheme monokai-pro]])
         end,
         lazy = false,
         priority = 1000,
     },
-    "MunifTanjim/nui.nvim",       -- This provides UI elements for other plugins
+    "MunifTanjim/nui.nvim",   -- This provides UI elements for other plugins
     {
         "stevearc/dressing.nvim", -- As does this
         event = "VeryLazy",
@@ -24,7 +34,7 @@ return {
     -- Nice notifcations
     {
         "rcarriga/nvim-notify",
-        event = "VeryLazy",
+        lazy = false,
         opts = {
             timeout = 3000,
             max_height = function()
@@ -35,9 +45,16 @@ return {
             end,
         },
         config = function(_, opts)
+            local filter = require("monokai-pro.colorscheme").filter
+            ---@module "monokai-pro.colorscheme.palette.pro"
+            local c = require("monokai-pro.colorscheme.palette." .. filter)
+            opts.background_color = c.background
             require("notify").setup(opts)
             vim.notify = require "notify"
         end,
+        dependencies = {
+            "loctvl842/monokai-pro.nvim",
+        }
     },
     {
         "nvim-tree/nvim-web-devicons",
