@@ -1,1 +1,1 @@
-return { "git.gh_create_pr", "git.gm_traverse_all", "git.gm_github_anno" }
+return { "git.gh_create_pr", "git.gm_traverse_all", "git.gm_github_anno", "git.gm_delete_unmanaged", "git.gm_sync" }

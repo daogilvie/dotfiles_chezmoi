@@ -1,9 +1,9 @@
 return {
-  name = "Git Machete Anno PRs",
+  name = "Git Machete Delete Unmanaged",
   builder = function()
     return {
       cmd = { "git" },
-      args = { "machete", "github", "anno-prs" },
+      args = { "machete", "delete-unmanaged", "-y" },
       components = { { "on_complete_dispose", timeout = 10 }, "default" },
     }
   end,
