@@ -2,7 +2,8 @@ local M = {}
 
 M.servers = function()
     return {
-        vale_ls = {}
+        vale_ls = {},
+        marksman = {},
     }
 end
 
