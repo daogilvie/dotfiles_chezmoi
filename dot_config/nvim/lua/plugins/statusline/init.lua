@@ -50,7 +50,7 @@ return {
                     lualine_c = {
                         "fancy_lsp_servers"
                     },
-                    lualine_x = { components.spaces, "encoding", },
+                    lualine_x = { "location", components.spaces, "encoding", },
                     lualine_y = {},
                     lualine_z = {},
                 },
