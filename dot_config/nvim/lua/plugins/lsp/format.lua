@@ -16,9 +16,10 @@ function M.format()
 end
 
 function M.on_attach(client, buf)
-  -- We special-case ts_ls here because literally never seem to end up
-  -- using it.
-  if client.name ~= "ts_ls" and client.supports_method "textDocument/formatting" then
+  if client.supports_method "textDocument/formatting" then
+    if vim.g.disabled_format_clients ~= nil and vim.g.disabled_format_clients[client.name] == true then
+      return
+    end
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("LspFormat." .. buf, {}),
       buffer = buf,
