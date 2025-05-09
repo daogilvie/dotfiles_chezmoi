@@ -169,5 +169,4 @@ M.dap = {
     BreakpointRejected = { " ", "DiagnosticError" },
     LogPoint = ".>",
 }
-
 return M

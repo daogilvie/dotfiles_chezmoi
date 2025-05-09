@@ -6,12 +6,12 @@ opt.wb = false
 opt.swapfile = false
 opt.autoread = true
 
+-- But I do want to persist undo buffers to disk
+opt.undofile = true
+
 -- Don't need modelines
 opt.modeline = false
 opt.modelines = 0
-
--- But I do want to persist undo buffers to disk
-opt.undofile = true
 
 -- Sane, friendly search behaviour
 opt.incsearch = true
@@ -32,6 +32,12 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 opt.copyindent = true
+
+-- I would like to see certain whitespace (taken from tiny.nvim)
+-- because if the above settings/editorconfig don't squash it out,
+-- it's probably relevant
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Fold things via indent in the default case
 opt.foldmethod = 'indent'
@@ -67,33 +73,22 @@ opt.formatoptions = opt.formatoptions
 opt.timeout = true
 opt.timeoutlen = 300
 
--- Line numbers with toggling
+-- I will be using global and window status lines, so don't need mode
+opt.showmode = false
+
 opt.number = true
 opt.relativenumber = true
-local numbertoggle_ag = vim.api.nvim_create_augroup('RelAbsLineToggle', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' },
-    { group = numbertoggle_ag, command = 'set relativenumber' })
-vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' },
-    { group = numbertoggle_ag, command = 'set norelativenumber' })
-
--- Place a ruler at column 80
-opt.colorcolumn = '80'
 
 -- I use Space and Comma as leader and local leader respectively
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[,]]
 
--- Make sure to add the mise shims to path,
--- but after the lua 5.1 install required by lazy
-vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
-vim.env.PATH = vim.env.HOME .. "/.local/share/mise/installs/lua/5.1/bin:" .. vim.env.PATH
-vim.env.PATH = vim.env.HOME .. "/.local/share/mise/installs/lua/5.1/luarocks/bin:" .. vim.env.PATH
-
--- Providers
-vim.g.python3_host_prog = vim.env.HOME .. "/.local/share/nvim/venv/bin/python"
+-- Providers are typically not needed, disable them
+vim.g.loaded_python3_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
 
--- Package local exrc
--- Mostly used for overseer tasks
+-- Package local exrc for 'per-project' config that uses
+-- the built-in 'trust' mechanism
 vim.o.exrc = true

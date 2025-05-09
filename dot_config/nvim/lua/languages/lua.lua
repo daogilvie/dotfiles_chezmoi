@@ -1,26 +1,18 @@
+local utils = require('languages._utils')
 return {
-    modules = {},
-    servers = function () return {
-        lua_ls = {
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        -- Get the language server to recognize the `vim` global
-                        globals = { 'vim' },
-                    },
-                    workspace = {
-                        checkThirdParty = false,
-                        -- Make the server aware of Neovim runtime files
-                        library = vim.api.nvim_get_runtime_file('', true),
-                    },
-                    completion = { callSnippet = "Replace" },
-                    telemetry = { enable = false },
-                    hint = {
-                        enable = false,
-                    },
-                },
-            },
-        },
+  servers = {
+    lua_ls = {
+      lsp_config = {
+        cmd = { 'lua-language-server' },
+        on_attach = utils.on_attach,
+        filetypes = { 'lua' },
+        root_markers = { '.luarc.json', '.luarc.jsonc' },
+      }
     }
-  end
+  },
+  neogen = {
+    template = {
+      annotation_convention = "ldoc",
+    },
+  }
 }

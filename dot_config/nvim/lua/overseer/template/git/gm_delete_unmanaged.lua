@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 return {
   name = "Git Machete Delete Unmanaged",
   builder = function()
@@ -10,12 +12,7 @@ return {
   condition = {
     -- Only offer this task in a git repo
     callback = function(_)
-      local path = vim.loop.cwd() .. "/.git"
-      local ok, _ = vim.loop.fs_stat(path)
-      if vim.fn.executable("git-machete") == 0 then
-        return false, 'Command "git-machete" not found'
-      end
-      return ok ~= nil
+      return utils.can_exec("git-machete") and utils.is_git_repo()
     end
   }
 }

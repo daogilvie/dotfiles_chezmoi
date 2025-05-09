@@ -1,17 +1,13 @@
-local M = {}
-
-M.servers = function()
-    return {
-        vale_ls = {},
-        marksman = {},
+local utils = require('languages._utils')
+return {
+  servers = {
+    marksman = {
+      lsp_config = {
+        cmd = { 'marksman', 'server' },
+        on_attach = utils.on_attach,
+        filetypes = { 'markdown' },
+        root_markers = { '.marksman.toml', '.git' },
+      }
     }
-end
-
-M.modules = {
+  },
 }
-
-M.test_adapters = function()
-    return {}
-end
-
-return M
