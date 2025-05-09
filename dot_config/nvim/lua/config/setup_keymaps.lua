@@ -1,15 +1,16 @@
-local map = require("utils").map_key
+-- Quick access to lazy
+vim.keymap.set({ 'n' }, '<leader>z', '<cmd>:Lazy<cr>', { desc = 'Plugin Manager' })
 
 -- Convenient saving
-map({ 'n' }, '<leader>w', ':w<CR>', 'Save')
+vim.keymap.set({ 'n' }, '<leader>w', ':w<CR>', { desc = 'Save' })
 
 -- Handy maps for common yank/paste needs
--- Taken from Primeagen and asbjornHaland's 'Greatest remaps ever'
-map({ 'v' }, '<leader>P', '"_dP', 'Paste-over without capturing')
-map({ 'n', 'v' }, '<leader>y', '"+y', 'Yank to system clipboard')
-map({ 'n' }, '<leader>Y', 'gg"+yG', 'Yank buffer to system clipboard')
-map({ 'n', 'v' }, '<leader>d', '"_d', 'Delete without capturing')
+-- Taken from Primeagen and asbjornHaland{ desc = 's 'Greatest remaps ever'
+vim.keymap.set({ 'v' }, '<leader>P', '"_dP', { desc = 'Paste-over without capturing' })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
+vim.keymap.set({ 'n' }, '<leader>Y', 'gg"+yG', { desc = 'Yank buffer to system clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete without capturing' })
 
 -- Quickfix jumping, in case it's needed
-map({ 'n' }, "[q", vim.cmd.cprev, "Previous quickfix")
-map({ 'n' }, "]q", vim.cmd.cnext, "Next quickfix")
+vim.keymap.set({ 'n' }, '[q', vim.cmd.cprev, { desc = 'Previous quickfix' })
+vim.keymap.set({ 'n' }, ']q', vim.cmd.cnext, { desc = 'Next quickfix' })
