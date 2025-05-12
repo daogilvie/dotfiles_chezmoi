@@ -26,10 +26,10 @@ return {
         convertTabsToSpaces = vim.o.expandtab,
         tabSize = vim.o.tabstop,
       },
-    },
-    completions = {
-      completeFunctionCalls = true,
-    },
+      completions = {
+        completeFunctionCalls = true,
+      },
+    }
   },
   neogen = {
     template = {

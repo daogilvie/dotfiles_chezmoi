@@ -8,9 +8,9 @@ for _, config in pairs(languages) do
     for lsp_name, lsp_config in pairs(config.servers) do
       -- TODO: handle absence of lsp_exec somehow
       -- We insert into a table to handle de-duplication (e.g js and ts)
-      table.insert(lsps, lsp_name)
+      lsps[lsp_name] = lsp_config
     end
   end
 end
 
-vim.lsp.enable(lsps)
+vim.lsp.enable(vim.tbl_keys(lsps))
