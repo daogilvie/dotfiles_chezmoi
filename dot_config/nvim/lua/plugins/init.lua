@@ -356,31 +356,38 @@ return {
     keys = {
       {
         "<leader>xs",
-        "<cmd>Trouble toggle symbols pinned=true win.relative=win win.position=right<cr>",
-        desc =
-        "Toggle document symbols"
+        "<cmd>Trouble symbols toggle pinned=true win.relative=win win.position=right<cr>",
+        desc = "Toggle document symbols"
       },
       {
         "<leader>xw",
         "<cmd>Trouble diagnostics toggle<cr>",
-        desc =
-        "Workspace diagnostics"
+        desc = "Workspace diagnostics"
       },
       {
         "<leader>xd",
         "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc =
-        "Document diagnostics"
+        desc = "Document diagnostics"
       },
       {
         "<leader>xL",
         "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
+        desc = "Loccation List",
       },
       {
         "<leader>xQ",
         "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
+        desc = "Quickfix List",
+      },
+      {
+        "<leader>xt",
+        "<cmd>Trouble snacks toggle<cr>",
+        desc = "Snacks Results",
+      },
+      {
+        "<leader>xf",
+        "<cmd>Trouble snacks_files toggle<cr>",
+        desc = "Snacks Files Results",
       },
       {
         "]x",
