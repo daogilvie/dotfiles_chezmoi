@@ -729,11 +729,10 @@ return {
           globalstatus = true,
         },
         sections = {
-          lualine_a = { { "fancy_mode", width = 3 } },
+          lualine_a = { { "fancy_mode", width = 3 }, "encoding" },
           lualine_b = {
-            { "fancy_cwd", substitute_home = true },
-            spaces, "encoding", },
-          lualine_c = {},
+            { "fancy_cwd", substitute_home = true } },
+          lualine_c = { "branch" },
           lualine_x = {},
           lualine_y = {},
           lualine_z = { "location" },
