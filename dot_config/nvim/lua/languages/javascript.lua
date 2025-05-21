@@ -1,3 +1,9 @@
+-- identify oxlint files as jsonc
+vim.filetype.add({
+  filename = {
+    ['.oxlintrc.json'] = 'jsonc'
+  }
+})
 return {
   servers = {
     ts_ls = {

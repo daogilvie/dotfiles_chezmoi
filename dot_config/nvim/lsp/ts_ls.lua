@@ -15,5 +15,6 @@ return {
   settings = {
     typescript = require('languages.typescript').servers.ts_ls.lsp_config,
     javascript = require('languages.javascript').servers.ts_ls.lsp_config,
+    diagnostics = { ignoredCodes = { 80001 } },
   }
 }
