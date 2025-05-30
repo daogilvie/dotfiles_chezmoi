@@ -1,55 +1,63 @@
-[column]
-    ui = auto
+[advice]
+    addEmptyPathspec = false
+	macheteEditorSelection = false
+    pushNonFastForward = false
+    statusHints = false
+[alias]
+	publish = push -u origin HEAD
 [branch]
     sort = -committerdate
+[column]
+    ui = auto
+[commit]
+	gpgsign = true
 [core]
+    compression = 9
 	excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
+    preloadindex = true
 [diff]
     algorithm = histogram
     colorMoved = plain
+    external = difft
+    interHunkContext = 10
     mnemonicPrefix = true
     renames = true
-    external = difft
 [fetch]
+    all = true
     prune = true
     pruneTags = true
-    all = true
-[user]
-    name = Drum Ogilvie
-    useConfigOnly = true
-	email = {{ .email }}
-    signingkey = {{ .chezmoi.homeDir }}/{{ (onepasswordItemFields .op_ssh_uuid).pubfile.value }}
-[push]
-	default = simple
-	autoSetupRemote = true
-	followTags = true
-[merge]
-	conflictStyle = zdiff3
-[alias]
-	publish = push -u origin HEAD
-[init]
-	defaultBranch = main
-[pull]
-	rebase = true
 [gpg]
 	format = ssh
-[commit]
-	gpgsign = true
-[tag]
-	gpgsign = true
-	sort = version:refname
 [gpg "ssh"]
 	allowedSignersFile = {{ .chezmoi.homeDir }}/.config/git/allowed_signers
 [help]
 	autocorrect = prompt
-[rebase]
-	autosquash = true
-	autostash = true
-	updateRefs = true
-[rerere]
-    enabled = true
-    autoupdate = true
-[advice]
-	macheteEditorSelection = false
+[init]
+	defaultBranch = main
+[log]
+    abbrevCommit = true
 [machete "github"]
         prDescriptionIntroStyle = full-no-branches
+[merge]
+	conflictStyle = zdiff3
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+	default = simple
+	followTags = true
+[rebase]
+	autostash = true
+	autosquash = true
+	updateRefs = true
+[rerere]
+    autoupdate = true
+    enabled = true
+[tag]
+	gpgsign = true
+	sort = version:refname
+[user]
+	email = {{ .email }}
+    name = Drum Ogilvie
+    signingkey = {{ .chezmoi.homeDir }}/{{ (onepasswordItemFields .op_ssh_uuid).pubfile.value }}
+    useConfigOnly = true
