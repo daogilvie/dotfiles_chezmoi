@@ -78,6 +78,30 @@ opt.showmode = false
 
 opt.number = true
 opt.relativenumber = true
+local numbertoggle_ag = vim.api.nvim_create_augroup('RelAbsLineToggle', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' },
+  {
+    group = numbertoggle_ag,
+    callback = function()
+      if vim.bo.filetype == 'snacks_dashboard' then
+        return
+      end
+      opt.relativenumber = true
+    end,
+    pattern = '*'
+  })
+vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' },
+  {
+    group = numbertoggle_ag,
+    callback = function()
+      if vim.bo.filetype == 'snacks_dashboard' then
+        return
+      end
+      opt.relativenumber = false
+    end,
+    pattern = '*'
+  })
+
 
 -- I use Space and Comma as leader and local leader respectively
 vim.g.mapleader = [[ ]]
