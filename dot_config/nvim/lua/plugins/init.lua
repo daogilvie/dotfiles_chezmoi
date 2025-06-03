@@ -341,7 +341,7 @@ return {
     },
     lazy = false,
     opts = {
-      templates = { "builtin", "git" }
+      templates = { "builtin", "git", "mise" }
     },
     config = function(_, opts)
       local overseer = require('overseer')
