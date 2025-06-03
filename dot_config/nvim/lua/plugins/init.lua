@@ -686,13 +686,6 @@ return {
     event = "VeryLazy",
     opts = function()
       -- Components
-      local spaces = {
-        function()
-          local shiftwidth = vim.api.nvim_get_option_value("shiftwidth", { buf = 0 })
-          return icons.ui.Tab .. " " .. shiftwidth
-        end,
-        padding = 1,
-      }
       local function code_location()
         local navic = require('nvim-navic')
         if navic.is_available() then
