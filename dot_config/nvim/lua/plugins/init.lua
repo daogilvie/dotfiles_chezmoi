@@ -632,7 +632,8 @@ return {
           },
           git = {
             module = 'blink-cmp-git',
-            name = 'Git'
+            name = 'Git',
+            opts = { commit = { triggers = { '¬' } } }
           },
           ripgrep = {
             module = "blink-ripgrep",
