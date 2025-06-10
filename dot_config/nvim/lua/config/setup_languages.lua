@@ -1,7 +1,6 @@
 local languages = require('languages')
 
 -- LSP configuration
--- TODO: Refer to language files in LSP sections
 local lsps = {}
 for _, config in pairs(languages) do
   if config.servers ~= nil then
