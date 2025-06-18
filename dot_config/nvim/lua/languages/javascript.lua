@@ -1,7 +1,10 @@
 -- identify oxlint files as jsonc
 vim.filetype.add({
   filename = {
-    ['.oxlintrc.json'] = 'jsonc'
+    ['.oxlintrc.json'] = 'jsonc',
+  },
+  pattern = {
+    ['.*%.swcrc'] = 'jsonc'
   }
 })
 return {
