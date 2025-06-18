@@ -78,12 +78,13 @@ opt.showmode = false
 
 opt.number = true
 opt.relativenumber = true
+local numberless_filetypes = { snacks_dashboard = true, gitcommit = true }
 local numbertoggle_ag = vim.api.nvim_create_augroup('RelAbsLineToggle', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' },
   {
     group = numbertoggle_ag,
     callback = function()
-      if vim.bo.filetype == 'snacks_dashboard' then
+      if numberless_filetypes[vim.bo.filetype] ~= nil then
         return
       end
       opt.relativenumber = true
@@ -94,7 +95,7 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' },
   {
     group = numbertoggle_ag,
     callback = function()
-      if vim.bo.filetype == 'snacks_dashboard' then
+      if numberless_filetypes[vim.bo.filetype] ~= nil then
         return
       end
       opt.relativenumber = false
