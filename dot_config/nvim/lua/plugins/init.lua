@@ -827,5 +827,9 @@ return {
     end,
     ft = "yaml"
   },
-  { "b0o/schemastore.nvim" }
+  { "b0o/schemastore.nvim" },
+  {
+    "qvalentin/helm-ls.nvim",
+    ft = "helm"
+  }
 }

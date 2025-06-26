@@ -23,6 +23,13 @@ return {
         filetypes = { 'yaml', 'yaml.docker-compose' },
         single_file_support = true,
       }
+    },
+    ['helm-ls'] = {
+      lsp_config = {
+        cmd = { 'helm_ls', 'serve' },
+        filetypes = { 'helm' },
+        on_attach = utils.on_attach,
+      }
     }
   },
 }
