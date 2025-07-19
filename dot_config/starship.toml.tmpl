@@ -36,6 +36,6 @@ disabled = true
 
 [custom.jj]
 command = 'jj show -T "change_id.shortest()" --no-patch'
-when = 'jj status'
+detect_folders = [".jj"]
 symbol = '🥋'
 format = 'on $symbol jj@[$output]($style) '
