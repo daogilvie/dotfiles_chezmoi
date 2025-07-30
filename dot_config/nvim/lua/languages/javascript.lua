@@ -42,7 +42,7 @@ return {
   },
   neogen = {
     template = {
-      annotation_convention = "js_doc"
+      annotation_convention = "jsdoc"
     },
   }
 }

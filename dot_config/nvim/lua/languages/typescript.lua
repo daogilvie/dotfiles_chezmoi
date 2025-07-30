@@ -21,7 +21,7 @@ return {
   },
   neogen = {
     template = {
-      annotation_convention = "ts_doc"
+      annotation_convention = "tsdoc"
     },
   }
 }
