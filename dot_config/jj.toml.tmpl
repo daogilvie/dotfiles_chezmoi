@@ -16,8 +16,8 @@ key = "{{ (onepasswordDetailsFields .op_ssh_uuid).public_key.value }} {{ .email 
 [git]
 auto-local-bookmark = true
 
-[core]
-fsmonitor = "watchman"
+[fsmonitor]
+backend = "watchman"
 
 [snapshot]
 max-new-file-size = "10MiB"
