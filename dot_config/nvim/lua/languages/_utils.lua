@@ -11,14 +11,15 @@ end
 
 M.get_default_keymaps = function()
   return {
-    { keys = "K",  func = vim.lsp.buf.hover,                   desc = "Documentation",   has = "hoverProvider" },
-    { keys = "gd", func = vim.lsp.buf.definition,              desc = "Goto Definition", has = "definitionProvider" },
-    { keys = "]d", func = M.diagnostic_goto(true),             desc = "Next Diagnostic" },
-    { keys = "[d", func = M.diagnostic_goto(false),            desc = "Prev Diagnostic" },
-    { keys = "]e", func = M.diagnostic_goto(true, "ERROR"),    desc = "Next Error" },
-    { keys = "[e", func = M.diagnostic_goto(false, "ERROR"),   desc = "Prev Error" },
-    { keys = "]w", func = M.diagnostic_goto(true, "WARNING"),  desc = "Next Warning" },
-    { keys = "[w", func = M.diagnostic_goto(false, "WARNING"), desc = "Prev Warning" },
+    { keys = "K",              func = vim.lsp.buf.hover,                   desc = "Documentation",   has = "hoverProvider" },
+    { keys = "<localleader>a", func = vim.lsp.buf.code_action,             desc = "Code Action",     has = "codeActionProvider" },
+    { keys = "gd",             func = vim.lsp.buf.definition,              desc = "Goto Definition", has = "definitionProvider" },
+    { keys = "]d",             func = M.diagnostic_goto(true),             desc = "Next Diagnostic" },
+    { keys = "[d",             func = M.diagnostic_goto(false),            desc = "Prev Diagnostic" },
+    { keys = "]e",             func = M.diagnostic_goto(true, "ERROR"),    desc = "Next Error" },
+    { keys = "[e",             func = M.diagnostic_goto(false, "ERROR"),   desc = "Prev Error" },
+    { keys = "]w",             func = M.diagnostic_goto(true, "WARNING"),  desc = "Next Warning" },
+    { keys = "[w",             func = M.diagnostic_goto(false, "WARNING"), desc = "Prev Warning" },
   }
 end
 
