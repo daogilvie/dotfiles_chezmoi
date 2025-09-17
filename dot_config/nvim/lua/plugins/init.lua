@@ -162,7 +162,7 @@ return {
         ensure_installed = 'all',
         sync_install = false,
         auto_install = true,
-        ignore_install = {},
+        ignore_install = { 'ipkg' },
         highlight = { enable = true },
         indent = { enable = false },
         incremental_selection = {
@@ -813,19 +813,29 @@ return {
       -- just bosh it in here.
       -- TODO: Pull into language blocks
       local lint = require("lint")
-      local actionlint = require('lint').linters.actionlint
+
+      -- Action lint
+      local actionlint = lint.linters.actionlint
       actionlint.stdin = false
       actionlint.args = { '-format', '{{json .}}' }
-      -- Specify actionlint on gha workflows
+
+      -- Golangcilint has error code nonsense
+      lint.linters.golangcilint.ignore_exitcode = true
+      -- General setups
+      lint.linters_by_ft = {
+        ['yaml.gha'] = { 'actionlint' },
+        go = { 'golangcilint' }
+      }
+
       vim.api.nvim_create_autocmd('BufWritePost', {
-        group = vim.api.nvim_create_augroup('lint_gha', { clear = true }),
-        pattern = '*/.github/workflows/*.yaml',
+        group = vim.api.nvim_create_augroup('nvim-lint', { clear = true }),
+        pattern = '*',
         callback = function()
-          lint.try_lint("actionlint")
+          lint.try_lint()
         end,
       })
     end,
-    ft = "yaml"
+    event = "BufReadPost"
   },
   { "b0o/schemastore.nvim" },
   {

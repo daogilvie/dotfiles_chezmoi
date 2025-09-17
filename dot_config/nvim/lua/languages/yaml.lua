@@ -1,9 +1,13 @@
 local utils = require('languages._utils')
--- identify docker compose files specifically
 vim.filetype.add({
+  -- identify docker compose files specifically
   filename = {
     ['docker-compose.yml'] = 'yaml.docker-compose',
     ['docker-compose.yaml'] = 'yaml.docker-compose',
+  },
+  pattern = {
+    -- identify gha workflows specifically
+    ['.*/.github/workflows/.*%.ya-ml'] = 'yaml.gha',
   }
 })
 return {
@@ -20,7 +24,7 @@ return {
       lsp_config = {
         cmd = { 'yaml-language-server', '--stdio' },
         on_attach = utils.on_attach,
-        filetypes = { 'yaml', 'yaml.docker-compose' },
+        filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gha' },
         single_file_support = true,
       }
     },
