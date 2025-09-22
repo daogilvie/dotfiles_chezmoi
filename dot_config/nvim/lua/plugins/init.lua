@@ -736,7 +736,7 @@ return {
             winbar = {
               "help",
               "lazy",
-              "dapui_console",
+              "dap-view",
               "dap-repl"
             },
           },
@@ -841,5 +841,159 @@ return {
   {
     "qvalentin/helm-ls.nvim",
     ft = "helm"
-  }
+  },
+  {
+    "mfussenegger/nvim-dap",
+    keys = {
+      { "<localleader>dR", function() require("dap").run_to_cursor() end, desc = "Run to Cursor", },
+      {
+        "<localleader>dE",
+        function() require("dapui").eval(vim.fn.input "[Expression] > ") end,
+        desc =
+        "Evaluate Input",
+      },
+      {
+        "<localleader>dB",
+        function() require("dap").toggle_breakpoint() end,
+        desc =
+        "Toggle Breakpoint",
+      },
+      {
+        "<localleader>dC",
+        function() require("dap").set_breakpoint(vim.fn.input "[Condition] > ") end,
+        desc =
+        "Conditional Breakpoint",
+      },
+      {
+        "<localleader>dU",
+        function() require("dap-view").toggle() end,
+        desc =
+        "Toggle UI",
+      },
+      {
+        "<localleader>db",
+        function() require("dap").step_back() end,
+        desc =
+        "Step Back",
+      },
+      {
+        "<localleader>dc",
+        function() require("dap").continue() end,
+        desc =
+        "Continue",
+      },
+      {
+        "<localleader>dd",
+        function() require("dap").disconnect() end,
+        desc =
+        "Disconnect",
+      },
+      {
+        "<localleader>dg",
+        function() require("dap").session() end,
+        desc =
+        "Get Session",
+      },
+      {
+        "<localleader>di",
+        function() require("dap").step_into() end,
+        desc =
+        "Step Into",
+      },
+      {
+        "<localleader>do",
+        function() require("dap").step_over() end,
+        desc =
+        "Step Over",
+      },
+      {
+        "<localleader>dl",
+        function() require("dap").run_last() end,
+        desc =
+        "Run Last"
+      },
+      { "<localleader>dp", function() require("dap").pause.toggle() end,  desc = "Pause", },
+      { "<localleader>dq", function() require("dap").close() end,         desc = "Quit", },
+      {
+        "<localleader>dr",
+        function() require("dap").repl.toggle() end,
+        desc =
+        "Toggle REPL",
+      },
+      {
+        "<localleader>ds",
+        function()
+          require("dap").continue()
+        end,
+        desc = "Start",
+      },
+      {
+        "<localleader>dx",
+        function() require("dap").terminate() end,
+        desc =
+        "Terminate",
+      },
+      {
+        "<localleader>du",
+        function() require("dap").step_out() end,
+        desc =
+        "Step Out",
+      },
+    },
+    event = "BufReadPre"
+  },
+  {
+    "leoluz/nvim-dap-go",
+    dependencies = {
+      "mfussenegger/nvim-dap"
+    },
+    config = function()
+      require('dap-go').setup()
+    end
+  },
+  {
+    "igorlfs/nvim-dap-view",
+    dependencies = {
+      "mfussenegger/nvim-dap"
+    },
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-python",
+      "fredrikaverpil/neotest-golang",
+    },
+    keys = {
+      {
+        '<leader>ts',
+        function() require('neotest').summary.toggle() end,
+        desc = "Toggle Neotest Summary"
+      },
+      { '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end, desc = "Test current file" },
+      { '<leader>tr', function() require('neotest').run.run() end,                   desc = "Run test" },
+      { '<leader>to', function() require('neotest').output.open() end,               desc = "Open Test Output" },
+      {
+        "<leader>tD",
+        function() require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' }) end,
+        desc = "Debug File"
+      },
+      {
+        "<leader>td",
+        function() require('neotest').run.run({ strategy = 'dap' }) end,
+        desc = "Debug test"
+      },
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = {
+          require("neotest-python"),
+          require("neotest-golang")
+        }
+      })
+    end
+  },
 }
