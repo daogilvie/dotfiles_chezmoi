@@ -6,7 +6,11 @@ function upup -d "Upgrade all the things"
         rustup self update; rustup update;
     end
     if command -sq mise
-        mise plugins update
+        if test (which mise) = ~/.local/bin/mise
+            mise self-update
+        else
+            mise plugins update
+        end
     end
     if functions -q fisher
         fisher update;
