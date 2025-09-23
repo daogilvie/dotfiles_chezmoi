@@ -20,6 +20,7 @@ return {
         root_markers = { 'docker-compose.yml', 'docker-compose.yaml' },
       }
     },
+    docker_ls = {},
     yaml_ls = {
       lsp_config = {
         cmd = { 'yaml-language-server', '--stdio' },

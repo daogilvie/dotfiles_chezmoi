@@ -25,7 +25,8 @@ end
 
 M.on_attach = function(client, buffer)
   local navic = require("nvim-navic")
-  if client.server_capabilities.documentSymbolProvider then
+  -- Docker LS lies about this for compose files
+  if client.server_capabilities.documentSymbolProvider and client.name ~= 'docker_ls' then
     navic.attach(client, buffer)
   end
 
