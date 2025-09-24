@@ -1,0 +1,14 @@
+dictionaries = ["en_gb"]
+words = [
+    "balancer",
+    "codebook",
+    "ecs",
+    "nginx",
+    "waf",
+]
+ignore_patterns = [
+    '\b[ATCG]+\b',
+    '\d{3}-\d{2}-\d{4}',
+    "^[A-Z]{2,}$",
+    'https?://[^\s]+',
+]

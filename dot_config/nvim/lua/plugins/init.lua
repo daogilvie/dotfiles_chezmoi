@@ -269,7 +269,6 @@ return {
               vim.g.conform_format_on_save = state and true or false
             end,
           }):map("<leader>uf")
-          Snacks.toggle.option('spell', { name = 'Spelling' }):map('<leader>us')
           Snacks.toggle.option('wrap', { name = 'Wrap' }):map('<leader>uw')
           Snacks.toggle.diagnostics():map('<leader>ud')
           Snacks.toggle.inlay_hints():map('<leader>uh')

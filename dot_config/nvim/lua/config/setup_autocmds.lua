@@ -12,12 +12,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- As per tiny.nvim, wrap and spell check in "text" types
+-- As per tiny.nvim, wrap in "text" types
 vim.api.nvim_create_autocmd("FileType", {
   group = make_augroup "wrap_spell",
   pattern = { "*.txt", "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
-    vim.opt_local.spell = true
   end,
 })

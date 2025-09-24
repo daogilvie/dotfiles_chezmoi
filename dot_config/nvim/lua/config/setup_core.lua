@@ -43,9 +43,6 @@ opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 opt.foldmethod = 'indent'
 opt.foldlevel = 4
 
--- I'm a brit
-opt.spelllang = 'en_gb'
-
 -- No wrapping, with nicer scroll behaviour
 opt.wrap = false
 opt.sidescroll = 5
