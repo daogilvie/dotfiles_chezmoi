@@ -7,7 +7,7 @@ function upup -d "Upgrade all the things"
     end
     if command -sq mise
         if test (which mise) = ~/.local/bin/mise
-            mise self-update
+            mise self-update -y
         else
             mise plugins update
         end
