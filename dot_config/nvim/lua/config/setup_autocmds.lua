@@ -5,11 +5,11 @@ end
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-    group = make_augroup "YankHighlight",
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+  group = highlight_group,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 -- As per tiny.nvim, wrap and spell check in "text" types
