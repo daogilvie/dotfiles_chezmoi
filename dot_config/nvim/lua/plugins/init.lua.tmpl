@@ -818,15 +818,38 @@ return {
       -- Action lint
       local actionlint = lint.linters.actionlint
       actionlint.stdin = false
-      actionlint.args = { '-format', '{{json .}}' }
+      actionlint.args = { '-format', {{ "'{{json .}}'" }} }
 
       -- Golangcilint has error code nonsense
       lint.linters.golangcilint.ignore_exitcode = true
+
+      {{- if eq .chezmoi.hostname "drummondogilvie-MacBook-Pro" }}
+      -- Setup linters for 9fin
+
+      local pattern = '([^:]+):(%d+):(%d+):(.+)%[(.+)%]'
+      local groups = { 'file', 'lnum', 'col', 'message', 'code' }
+      lint.linters.nine_lint = {
+          cmd = 'nine',
+          stdin = false, 
+          append_fname = true,
+          args = {'lint', },
+          stream = 'stderr',
+          ignore_exitcode = true,
+          env = nil,
+          parser = require('lint.parser').from_pattern(pattern, groups, nil, {["source"] = "nine lint"}, nil)
+      }
+
+      lint.linters_by_ft = {
+        ['yaml.gha'] = { 'nine_lint' },
+        go = { 'golangcilint' }
+      }
+      {{- else }}
       -- General setups
       lint.linters_by_ft = {
         ['yaml.gha'] = { 'actionlint' },
         go = { 'golangcilint' }
       }
+      {{- end }}
 
       vim.api.nvim_create_autocmd('BufWritePost', {
         group = vim.api.nvim_create_augroup('nvim-lint', { clear = true }),
