@@ -21,5 +21,5 @@ return {
     'typescript',
     'typescriptreact',
   },
-  root_markers = { '.git', 'codebook.toml', '.codebook.toml' },
+  root_markers = { 'codebook.toml', '.codebook.toml', '.git' },
 }

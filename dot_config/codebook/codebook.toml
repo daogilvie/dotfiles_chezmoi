@@ -1,9 +1,24 @@
-dictionaries = ["en_gb"]
+dictionaries = [
+    "en_gb",
+    "en_us",
+]
 words = [
     "balancer",
     "codebook",
+    "docker's",
     "ecs",
+    "homebrew",
+    "iam",
+    "mise",
     "nginx",
+    "npmrc",
+    "npx",
+    "pdfviewer",
+    "postgre",
+    "tfenv",
+    "tflint",
+    "userprofile",
+    "vscode",
     "waf",
 ]
 ignore_patterns = [
