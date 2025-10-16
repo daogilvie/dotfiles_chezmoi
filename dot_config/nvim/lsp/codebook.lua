@@ -1,4 +1,6 @@
+local utils = require('languages._utils')
 return {
+  on_attach = utils.on_attach,
   cmd = { 'codebook-lsp', 'serve' },
   filetypes = {
     'c',
