@@ -1,0 +1,19 @@
+[language-server.vscode-json-language-server]
+command = "vscode-json-languageserver"
+
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
+
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "codebook"]
+
+[[language]]
+name = "python"
+language-servers = ["ty", "ruff", "basedpyright"]
