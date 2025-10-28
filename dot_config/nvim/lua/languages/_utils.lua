@@ -13,6 +13,7 @@ M.get_default_keymaps = function()
   return {
     { keys = "K",              func = vim.lsp.buf.hover,                   desc = "Documentation",   has = "hoverProvider" },
     { keys = "<localleader>a", func = vim.lsp.buf.code_action,             desc = "Code Action",     has = "codeActionProvider" },
+    { keys = "<localleader>r", func = vim.lsp.buf.rename,                  desc = "Rename",     has = "renameProvider" },
     { keys = "gd",             func = vim.lsp.buf.definition,              desc = "Goto Definition", has = "definitionProvider" },
     { keys = "]d",             func = M.diagnostic_goto(true),             desc = "Next Diagnostic" },
     { keys = "[d",             func = M.diagnostic_goto(false),            desc = "Prev Diagnostic" },
