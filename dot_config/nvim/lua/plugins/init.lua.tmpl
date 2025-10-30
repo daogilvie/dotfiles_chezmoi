@@ -100,7 +100,6 @@ return {
           'cmp_menu',
           'noice',
           'flash_prompt',
-          'NeogitStatus',
           function(win)
             -- exclude non-focusable windows
             return not vim.api.nvim_win_get_config(win).focusable
@@ -255,6 +254,7 @@ return {
       { '<leader>cR',      function() Snacks.rename.rename_file() end,            desc = 'Rename File' },
       { '<leader>un',      function() Snacks.notifier.hide() end,                 desc = 'Dismiss All Notifications' },
       { '<c-/>',           function() Snacks.terminal() end,                      desc = 'Toggle Terminal' },
+      { '<leader>gg',      function() Snacks.lazygit() end,                       desc = 'Open lazygit' },
     },
     init = function()
       vim.api.nvim_create_autocmd('User', {
@@ -430,25 +430,6 @@ return {
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-  },
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",  -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-      "folke/snacks.nvim"
-    },
-    config = true,
-    keys = {
-      {
-        "<leader>gg",
-        function()
-          local ng = require('neogit')
-          ng.open({ kind = "floating" })
-        end,
-        desc = "Open Neogit"
-      },
-    },
   },
   {
     "lewis6991/gitsigns.nvim",
