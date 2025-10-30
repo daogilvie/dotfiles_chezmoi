@@ -61,3 +61,7 @@
     name = Drum Ogilvie
     signingkey = {{ .chezmoi.homeDir }}/{{ (onepasswordItemFields .op_ssh_uuid).pubfile.value }}
     useConfigOnly = true
+{{- if eq .chezmoi.hostname "drummondogilvie-MacBook-Pro" }}
+[includeIf "gitdir:~/Developer/9fin/"]
+    path = ~/Developer/9fin/.gitconfig_include
+{{- end }}
