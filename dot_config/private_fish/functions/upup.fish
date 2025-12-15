@@ -2,9 +2,6 @@ function upup -d "Upgrade all the things"
     if command -sq brew
         brew update; brew upgrade; brew cleanup;
     end
-    if command -sq rustup
-        rustup self update; rustup update;
-    end
     if command -sq mise
         if test (which mise) = ~/.local/bin/mise
             mise self-update -y
