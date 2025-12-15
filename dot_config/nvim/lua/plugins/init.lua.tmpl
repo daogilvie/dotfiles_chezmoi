@@ -152,29 +152,10 @@ return {
   -- https://github.com/alpha2phi/modern-neovim/blob/main/lua/plugins/treesitter/init.lua
   {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+    dependencies = { {'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' } },
+    branch = 'main',
+    lazy = false,
     build = ':TSUpdate',
-    event = 'BufReadPost',
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        modules = {},
-        ensure_installed = 'all',
-        sync_install = false,
-        auto_install = true,
-        ignore_install = { 'ipkg' },
-        highlight = { enable = true },
-        indent = { enable = false },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = 'gnn',
-            node_incremental = 'grn',
-            scope_incremental = 'grc',
-            node_decremental = 'grm',
-          },
-        },
-      }
-    end,
   },
   {
     'folke/snacks.nvim',
