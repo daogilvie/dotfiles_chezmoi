@@ -13,11 +13,11 @@ behaviour = "own"
 backend = "ssh"
 key = "{{ (onepasswordDetailsFields .op_ssh_uuid).public_key.value }} {{ .email }}"
 
-[git]
-auto-local-bookmark = true
-
 [fsmonitor]
 backend = "watchman"
+
+[remotes.origin]
+auto-track-bookmarks = "glob:*"
 
 [snapshot]
 max-new-file-size = "10MiB"
