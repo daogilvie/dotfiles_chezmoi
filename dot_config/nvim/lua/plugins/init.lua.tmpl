@@ -156,6 +156,34 @@ return {
     branch = 'main',
     lazy = false,
     build = ':TSUpdate',
+    config = function(_, opts)
+      vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup("ts-check", { clear = true }),
+        pattern = { '*' },
+        callback = function(args)
+          local treesitter = require('nvim-treesitter')
+          local lang = vim.treesitter.language.get_lang(args.match)
+          if lang == "snacks_notif" then return end
+          if vim.list_contains(treesitter.get_available(), lang) then
+            if not vim.list_contains(treesitter.get_installed(), lang) then
+              vim.schedule(function()
+                  vim.ui.select({'y', 'n'}, {
+                    prompt = 'Install ts grammar for ' .. lang .. '?'
+                    },
+                    function(choice, idx)
+                      dd(choice)
+                      dd(idx)
+                      if choice == "y" then treesitter.install(lang) end
+                    end)
+              end)
+            else 
+              vim.treesitter.start(args.buf)
+            end
+          end
+        end,
+        desc = "TS auto enable, and install with prompt"
+      })
+    end
   },
   {
     'folke/snacks.nvim',
@@ -181,6 +209,7 @@ return {
         },
       },
       explorer = { enabled = true },
+      gh = {},
       indent = { enabled = true },
       input = { enabled = true },
       notifier = {
