@@ -171,8 +171,6 @@ return {
                     prompt = 'Install ts grammar for ' .. lang .. '?'
                     },
                     function(choice, idx)
-                      dd(choice)
-                      dd(idx)
                       if choice == "y" then treesitter.install(lang) end
                     end)
               end)
