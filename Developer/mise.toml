@@ -1,0 +1,22 @@
+[tools]
+gh = "latest"
+
+[tasks.wpr]
+description = "Open PR in web editor"
+run = [
+    "gh pr create -w --fill-verbose"
+]
+dir = "{{cwd}}"
+
+[tasks.install_go_tools]
+description = "Install go packages I use that mise can't manage"
+run = [
+    "go install github.com/go-delve/delve/cmd/dlv@latest",
+    "go install github.com/nametake/golangci-lint-langserver@latest",
+    "go install golang.org/x/tools/gopls@latest",
+    "go install github.com/docker/docker-language-server/cmd/docker-language-server@latest"
+  ]
+
+[tasks.install_npm_tools]
+description = "Install npm global packages I use that mise can't manage"
+run = "npm i -g sql-formatter prettier @microsoft/compose-language-service vscode-json-languageserver typescript-language-server"
