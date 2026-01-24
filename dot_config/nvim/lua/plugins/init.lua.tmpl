@@ -190,7 +190,7 @@ return {
     ---@type snacks.config
     ---@diagnostic disable-next-line:missing-fields
     opts = {
-      bigfile = { enabled = true },
+      bigfile = { enabled = false },
       dashboard = {
         enabled = true,
         sections = {
@@ -319,7 +319,7 @@ return {
         javascriptreact = { "prettierd", "prettier", stop_after_first = true },
         go = { "gofumpt" },
         sql = { "sql_formatter" },
-        python = { "black" }
+        python = { "ruff format", "black" }
       },
       formatters = {
       },
