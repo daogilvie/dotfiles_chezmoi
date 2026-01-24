@@ -15,6 +15,3 @@ if command -v nvim >/dev/null
     abbr -a vdiff 'nvim --diff'
     abbr -a nvses 'nvim -S Session.vim'
 end
-if command -v git machete >/dev/null
-    abbr -a gm 'git machete'
-end
